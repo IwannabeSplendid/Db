@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="home">
+    <div class="sidenav">
+        <a href = {% url 'dt' %}>Disease Type</a>
+        <a href = {% url 'country' %}>Country</a>
+        <a href = {% url 'disease' %}>Disease</a>
+        <a href = {% url 'discover' %}>Discover</a>
+        <a href = {% url 'users' %}>Users</a>
+        <a href = {% url 'ps' %}>Public Servant</a>
+        <a href = {% url 'doctor' %}>Doctor</a>
+        <a href = {% url 'specialize' %}>Specialize</a>
+        <a href = {% url 'record' %}>Record</a>
+    </div>
+</section>
+
+<section class="about">
+
+    <div class="table">
+        <h1 class="heading"> table: <span>{{ name }}</span> </h1>
+    </div>
+
+    <div class="add_btt">
+        <a class="btn" href={% url 'users_add' %} > Add new element </a>
+    </div>
+
+    <div class="table">
+        <div class="content">
+            <table>
+                <thead>
+                    <tr>
+                    <th>Email
+                    <th>Name
+                    <th>Surname
+                    <th> Salary
+                    <th> Phone number
+                    <th> country
+                    <th> Actions
+                </thead>
+                <tbody>
+                    {% for row in data %}
+                    <tr>
+                    <td>{{ row.email }}
+                    <td>{{ row.name }}
+                    <td>{{ row.surname }}
+                    <td>{{ row.salary }}
+                    <td>{{ row.phone }}
+                    <td>{{ row.cname_id__cname }}
+                    <td> <a href={% url 'users_edit' id=row.id %}>edit</a>
+                    {% endfor %}
+                </tbody>
+              </table>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+{% endblock content %}
+
+

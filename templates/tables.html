@@ -1,0 +1,130 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medcare </title>
+
+    <!-- font awesome cdn link  -->
+    <script src="https://kit.fontawesome.com/0837fcb2b3.js" crossorigin="anonymous"></script>
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+  </head>
+  <body>
+    
+  <!-- header section starts  -->
+
+  <header class="header">
+
+      <a href="#" class="logo"> <i class="fas fa-heartbeat"></i> medcare. </a>
+
+      <nav class="navbar">
+          <a href={% url 'home' %}>home</a>
+          <a href={% url 'tables' %}>tables</a>
+          {% if user.is_authenticated %}
+          <a href={% url 'userpage' name=user.username %}>user page</a>
+          <a href={% url 'logout' %}>log out</a>
+          {% endif %}
+      </nav>
+      <div id="menu-btn" class="fas fa-bars"></div>
+
+  </header>
+<section class="home" id="home">
+
+    <div class="image">
+        <img src="{% static 'image/admin.png' %}" alt="">
+    </div>
+
+    <div class="content">
+        <h3>Welcome, {{ user.username }}.</h3>
+    </div>
+
+</section>
+
+<section class="services" id="services">
+
+    <h1 class="heading"> our <span>Tables</span> </h1>
+
+    <div class="box-container">
+        <div class="box">
+            <i class="fas fa-virus"></i>
+            <h3>Disease Type</h3>
+            <a href={% url 'dt' %} class="btn"> edit <span class="fas fa-chevron-right"></span> </a>
+        </div>
+
+        <div class="box">
+            <i class="fas fa-earth-asia"></i>
+            <h3>Country</h3>
+            <a href={% url 'country' %} class="btn"> edit <span class="fas fa-chevron-right"></span> </a>
+        </div>
+
+        <div class="box">
+            <i class="fas fa-disease"></i>
+            <h3>Disease</h3>
+            <a href={% url 'disease' %} class="btn"> edit <span class="fas fa-chevron-right"></span> </a>
+        </div>
+
+        <div class="box">
+            <i class="fas fa-flag"></i>
+            <h3>Discover</h3>
+            <a href={% url 'discover' %} class="btn"> edit <span class="fas fa-chevron-right"></span> </a>
+        </div>
+
+        <div class="box">
+            <i class="fas fa-user"></i>
+            <h3> Users </h3>
+            <a href={% url 'users' %} class="btn"> edit <span class="fas fa-chevron-right"></span> </a>
+        </div>
+
+        <div class="box">
+            <i class="fa-solid fa-user-tie"></i>
+            <h3> Public Servant</h3>
+            <a href={% url 'ps' %} class="btn"> edit <span class="fas fa-chevron-right"></span> </a>
+        </div>
+        <div class="box">
+            <i class="fa-solid fa-user-doctor"></i>
+            <h3> Doctor</h3>
+            <a href={% url 'doctor' %} class="btn"> edit <span class="fas fa-chevron-right"></span> </a>
+        </div>
+        <div class="box">
+            <i class="fa-solid fa-microscope"></i>
+            <h3> Specialize</h3>
+            <a href={% url 'specialize' %} class="btn"> edit <span class="fas fa-chevron-right"></span> </a>
+        </div>
+        <div class="box">
+            <i class="fa-sharp fa-solid fa-clipboard"></i>
+            <h3> Record </h3>
+            <a href={% url 'record' %} class="btn"> edit <span class="fas fa-chevron-right"></span> </a>
+        </div>
+    </div>
+
+</section>
+
+
+<section class="footer">
+    <div class="box">
+        <a> <i class="fas fa-envelope"></i> Aruzhan.Sabyrbek@nu.edu.kz.com </a>
+        <a> <i class="fas fa-map-marker-alt"></i> Astana, Kazakhstan </a>
+    </div>
+  </section>
+
+  <!-- footer section ends -->
+  <script src="{% static 'js/script.js' %}"></script>
+</body></html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

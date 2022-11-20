@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- home section starts  -->
+
+<section class="home" id="home">
+
+    <div class="image">
+        {% if is_staff %}
+        <img src="{% static 'image/admin.png' %}" alt="">
+        {% else %}
+        <img src="{% static 'image/ill.png' %}" alt="">
+        {% endif %}
+    </div>
+
+    <div class="content">
+        <h3>Welcome, {{ name }}.</h3>
+        {% if is_staff %}
+        <p>Let's do some work with tables.</p>
+        <a href={% url 'tables' %} class="btn"> Go to Work <span class="fas fa-chevron-right"></span> </a>
+        {% else %}
+        <p>Do you Feel ill? </p>
+        <p> then contact us to make an appointment for you.</p>
+        <a class="btn"> Contact us <span class="fas fa-chevron-right"></span> </a>
+        {% endif %}
+    </div>
+
+</section>
+
+<!-- home section ends -->
+
+
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

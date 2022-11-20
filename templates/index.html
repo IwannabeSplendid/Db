@@ -1,0 +1,188 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medcare </title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+  </head>
+  <body>
+    
+  <!-- header section starts  -->
+
+  <header class="header">
+
+      <a href="#" class="logo"> <i class="fas fa-heartbeat"></i> medcare. </a>
+
+      <nav class="navbar">
+          <a href={% url 'home' %}>home</a>
+          <a href="#services">services</a>
+          <a href="#about">about</a>
+          <a href="#doctors">doctors</a>
+          {% if user.is_authenticated %}
+          <a href={% url 'userpage' name=user.username %}>user page</a>
+          <a href={% url 'logout' %}>log out</a>
+          {% endif %}
+          {% if user.is_authenticated == False %}
+          <a href={% url 'register' %}>register</a>
+          <a href={% url 'log' %}>log in</a>
+          {% endif %}
+      </nav>
+      <div id="menu-btn" class="fas fa-bars"></div>
+
+  </header>
+<!-- home section starts  -->
+
+<section class="home" id="home">
+
+    <div class="image">
+        <img src="{% static 'image/home.png' %}" alt="">
+    </div>
+
+    <div class="content">
+        <h3>Stay healthy with Medcare.</h3>
+        <p>Became better after making appointment with our excellent doctors, register first!</p>
+        <a href={% url 'register' %} class="btn"> Register <span class="fas fa-chevron-right"></span> </a>
+    </div>
+
+</section>
+
+<!-- home section ends -->
+
+<!-- icons section starts  -->
+
+<section class="icons-container">
+
+    <div class="icons">
+        <i class="fas fa-user-md"></i>
+        <h3>{{ d_num}}</h3>
+        <p>Doctors at work</p>
+    </div>
+
+    <div class="icons">
+        <i class="fas fa-user"></i>
+        <h3>{{ p_num}}</h3>
+        <p>Public Servants at work</p>
+    </div>
+
+    <div class="icons">
+        <i class="fas fa-disease"></i>
+        <h3>{{ t_num }}</h3>
+        <p>Treatable diseases</p>
+    </div>
+
+</section>
+
+<!-- icons section ends -->
+
+<!-- services section starts  -->
+
+<section class="services" id="services">
+
+    <h1 class="heading"> our <span>services</span> </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <i class="fas fa-notes-medical"></i>
+            <h3>free checkups</h3>
+            <p>Free, wonderful checkups</p>
+        </div>
+
+        <div class="box">
+            <i class="fas fa-ambulance"></i>
+            <h3>24/7 ambulance</h3>
+            <p>Got ill at the night, here is 24/7 ambulance</p>
+        </div>
+
+        <div class="box">
+            <i class="fas fa-user-md"></i>
+            <h3>expert doctors</h3>
+            <p>Exceptional doctors</p>
+        </div>
+
+        <div class="box">
+            <i class="fas fa-pills"></i>
+            <h3>medicines</h3>
+            <p>Expensive but good medicine.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- services section ends -->
+
+<!-- about section starts  -->
+
+<section class="about" id="about">
+
+    <h1 class="heading"> <span>about</span> us </h1>
+
+    <div class="row">
+
+        <div class="image">
+            <img src={% static 'image/about.png' %} alt="">
+        </div>
+
+        <div class="content">
+            <h3>we are your solution for healthy life</h3>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure ducimus, quod ex cupiditate ullam in assumenda maiores et culpa odit tempora ipsam qui, quisquam quis facere iste fuga, minus nesciunt.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- about section ends -->
+
+<!-- doctors section starts  -->
+
+<section class="doctors" id="doctors">
+
+    <h1 class="heading"> our <span>doctors</span> </h1>
+
+    <div class="box-container">
+        {% for doctor in doctors%}
+        <div class="box">
+            <h3>{{ doctor.email__name }} {{  doctor.email__surname }}</h3>
+            <span>Degree - {{ doctor.degree }}</span>
+            <a class="fas fa-envelope"> {{  doctor.email }} </a>
+        </div>
+        {% endfor %}
+    </div>
+
+</section>
+
+<!-- doctors section ends -->
+
+<section class="footer">
+    <div class="box">
+        <a> <i class="fas fa-envelope"></i> Aruzhan.Sabyrbek@nu.edu.kz.com </a>
+        <a> <i class="fas fa-map-marker-alt"></i> Astana, Kazakhstan </a>
+    </div>
+  </section>
+
+</body></html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
