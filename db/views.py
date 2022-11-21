@@ -16,7 +16,7 @@ urls = ['dt', 'country','disease', 'discover','users', "ps", 'doctor', 'speciali
 sidenav = zip(tableList, urls)
 
 def index(request):
-    doctors = Doctor.objects.order_by('-email__salary').values('email__name', 'email__surname', 'email', 'degree')[:6]
+    doctors = Doctor.objects.order_by('-email__salary').values('email__name', 'email__surname', 'email_id__email', 'degree')[:6]
     d_num = Doctor.objects.count()
     p_num = PublicServant.objects.count()
     t_num = Disease.objects.count()
